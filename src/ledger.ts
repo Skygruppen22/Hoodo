@@ -1,4 +1,4 @@
-import { Transaction, JournalEntry, TransactionType } from './types';
+import { Transaction, JournalEntry, TransactionType, AccountType } from './types';
 import { AccountManager } from './account-manager';
 
 /**
@@ -86,10 +86,10 @@ export class Ledger {
   /**
    * Calculate balance change based on account type and transaction type
    */
-  private calculateBalanceChange(accountType: string, transactionType: TransactionType, amount: number): number {
+  private calculateBalanceChange(accountType: AccountType, transactionType: TransactionType, amount: number): number {
     // Assets and Expenses increase with debits
     // Liabilities, Equity, and Revenue increase with credits
-    const increaseWithDebit = accountType === 'ASSET' || accountType === 'EXPENSE';
+    const increaseWithDebit = accountType === AccountType.ASSET || accountType === AccountType.EXPENSE;
     
     if (increaseWithDebit) {
       return transactionType === TransactionType.DEBIT ? amount : -amount;
