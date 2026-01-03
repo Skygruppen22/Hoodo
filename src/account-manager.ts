@@ -55,6 +55,6 @@ export class AccountManager {
   }
 
   private generateId(): string {
-    return `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `acc_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
   }
 }
